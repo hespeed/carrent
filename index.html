@@ -3,210 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>禾速車隊 - 尊榮接送服務</title>
+    <title>禾速車隊 - 青春活力尊榮系統</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root {
-            --brand-gold: #D4AF37;
-            --brand-dark: #1A1A1A;
-            --brand-gray: #2C2C2C;
-            --bg-light: #f8f9fa;
-        }
-
-        body { 
-            background-color: var(--bg-light); 
-            font-family: "Microsoft JhengHei", sans-serif; 
-            padding-bottom: 50px;
-        }
-        
-        .line-header { 
-            background-color: #00b900; color: white; text-align: center; padding: 12px; 
-            font-weight: bold; text-decoration: none; display: block; position: sticky; top: 0; z-index: 1000;
-        }
-
-        .brand-section { 
-            background: linear-gradient(135deg, var(--brand-dark), var(--brand-gray)); 
-            color: var(--brand-gold); padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--brand-gold); 
-        }
-        .brand-logo { font-size: 2.5rem; font-weight: 800; letter-spacing: 5px; }
-
-        .image-showcase {
-            width: 100%; height: 220px; overflow: hidden; border-radius: 15px; margin-top: -20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15); background-color: #333;
-        }
-        .image-showcase img { width: 100%; height: 100%; object-fit: cover; }
-
-        .nav-card { 
-            background: white; border: none; border-radius: 15px; padding: 20px; text-align: center; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
-            text-decoration: none; color: var(--brand-dark); display: block; margin-bottom: 15px;
-        }
-        .nav-card:hover { transform: translateY(-3px); border-left: 6px solid var(--brand-gold); }
-
-        .form-container {
-            background: white; padding: 25px; border-radius: 20px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-top: 20px;
-        }
-        .btn-gold { background-color: var(--brand-gold); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 10px; width: 100%; }
-        
-        .img-grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .img-placeholder { background: #eee; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999; min-height: 100px; font-size: 0.8rem; text-align: center; }
-        .img-large { grid-column: span 2; min-height: 150px; }
-
-        .note-text { font-size: 0.85rem; color: #d9534f; margin-top: 5px; font-weight: bold; }
-        .price-card { background: white; border-radius: 12px; padding: 15px; border-top: 4px solid var(--brand-gold); }
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Noto+Sans+TC:wght@400;700&display=swap');
+        :root { --vibrant-orange: #FF7E5F; --sunny-yellow: #FEB47B; --bg-soft: #FFF9F5; }
+        body { background-color: var(--bg-soft); color: #444; font-family: 'Lexend', 'Noto Sans TC', sans-serif; padding-bottom: 50px; }
+        .line-header { background: linear-gradient(90deg, #43E97B 0%, #38F9D7 100%); color: #006400; text-align: center; padding: 14px; font-weight: 700; text-decoration: none; display: block; position: sticky; top: 0; z-index: 1000; }
+        .brand-header { padding: 40px 20px; text-align: center; background: linear-gradient(135deg, var(--vibrant-orange), var(--sunny-yellow)); border-radius: 0 0 40px 40px; margin-bottom: 25px; color: white; }
+        .brand-name { font-size: 2.5rem; font-weight: 700; margin: 0; }
+        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+        .img-placeholder { background: #FFEFEA; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: #FFB3A1; font-weight: 700; border: 2px dashed #FFD6CC; text-align: center; font-size: 0.9rem; }
+        .img-small { height: 90px; }
+        .img-large { height: 160px; grid-column: span 2; }
+        .menu-btn { background: white; border-radius: 20px; padding: 22px; text-align: center; margin-bottom: 18px; cursor: pointer; box-shadow: 0 6px 15px rgba(255, 126, 95, 0.1); border: 2px solid transparent; }
+        .menu-btn h5 { margin: 0; font-weight: 700; color: var(--vibrant-orange); }
+        .container-form { background: white; border-radius: 30px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .form-label { font-weight: 700; color: #FF8C69; margin-bottom: 8px; }
+        .form-control, .form-select { border-radius: 12px; border: 2px solid #FFE4E0; padding: 12px; }
+        .btn-action { background: linear-gradient(90deg, #FF7E5F, #FF6B6B); color: white; border: none; padding: 16px; border-radius: 15px; width: 100%; font-weight: 700; font-size: 1.1rem; margin-top: 15px; }
+        .note-text { font-size: 0.85rem; color: #E67E22; background: #FFF8F0; padding: 15px; border-radius: 12px; margin-top: 10px; border-left: 4px solid var(--sunny-yellow); }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-<a href="#" class="line-header">LINE 官方帳號預約：@hespeed</a>
+<a href="#" class="line-header">官方 LINE 帳號 (OFFICIAL LINE ACCOUNT)</a>
 
 <div id="app">
-    <div id="view-home">
-        <div class="brand-section">
-            <div class="brand-logo">禾速車隊</div>
-            <p class="small text-uppercase mb-0">He Speed Premium Transport</p>
+    <div id="page-home" class="container mt-0">
+        <div class="brand-header"><div class="brand-name">禾速車隊</div><p class="small">HESPEED PREMIUM</p></div>
+        <div class="img-grid px-3">
+            <div class="img-placeholder img-small">上方兩小圖 1<br>(TOP PIC 1)</div>
+            <div class="img-placeholder img-small">上方兩小圖 2<br>(TOP PIC 2)</div>
+            <div class="img-placeholder img-large">下方一大圖預留區<br>(MAIN PHOTO AREA)</div>
         </div>
-        <div class="container">
-            <div class="image-showcase">
-                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" alt="禾速車隊">
-            </div>
-            <div class="mt-4">
-                <div class="nav-card" onclick="showView('login')"><h5>👤 會員登入 / 專區</h5></div>
-                <div class="row g-3">
-                    <div class="col-6"><div class="nav-card" onclick="showView('pickup')"><h5>🛬 機場接機</h5></div></div>
-                    <div class="col-6"><div class="nav-card" onclick="showView('dropoff')"><h5>🛫 機場送機</h5></div></div>
-                    <div class="col-12"><div class="nav-card" onclick="showView('p2p')"><h5>📍 定點交通</h5></div></div>
-                </div>
-            </div>
+        <div id="home-menu" class="px-3">
+            <div class="menu-btn" onclick="showPage('page-login')"><h5>會員登入 (MEMBER LOGIN)</h5></div>
+            <div class="menu-btn" onclick="checkAuth('page-pickup')"><h5>機場接機 (PICKUP)</h5></div>
+            <div class="menu-btn" onclick="checkAuth('page-dropoff')"><h5>機場送機 (DROPOFF)</h5></div>
+            <div class="menu-btn" onclick="checkAuth('page-p2p')"><h5>定點交通 (P2P)</h5></div>
         </div>
     </div>
 
-    <div id="view-dropoff" style="display:none;" class="container p-3">
-        <div class="text-center mb-3"><h4 class="fw-bold">禾速車隊 - 機場送機</h4></div>
-        <div class="img-grid-container">
-            <div class="img-placeholder">圖檔預留 1</div>
-            <div class="img-placeholder">圖檔預留 2</div>
-            <div class="img-placeholder img-large">下圖預留 (賓士九人座)</div>
+    <div id="page-pickup" class="container mt-4 hidden">
+        <div class="brand-header"><div class="brand-name">禾速車隊</div></div>
+        <div class="img-grid">
+            <div class="img-placeholder img-small">上方兩小圖 1</div><div class="img-placeholder img-small">上方兩小圖 2</div>
+            <div class="img-placeholder img-large">下方一大圖預留區</div>
         </div>
-        <div class="form-container">
+        <div class="container-form">
             <div class="mb-3">
-                <label class="form-label fw-bold">送機機場</label>
+                <label class="form-label">接機機場 (AIRPORT)</label>
                 <select class="form-select"><option>台北松山機場</option><option>桃園國際機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option></select>
             </div>
+            <div class="mb-3"><label class="form-label">航班編號 (FLIGHT NO.)</label><input type="text" class="form-control" placeholder="請使用者輸入航班"></div>
+            <div class="mb-3"><label class="form-label">訂車日期 (DATE)</label><input type="date" class="form-control"></div>
             <div class="mb-3">
-                <label class="form-label fw-bold">航班編號</label>
-                <input type="text" class="form-control" placeholder="請輸入航班編號">
+                <label class="form-label">預定接機時間 (TIME)</label><input type="time" class="form-control">
+                <div class="note-text">備註：若超過落地時間90分鐘，仍未上車，每15分鐘加收NT$100逾時費，不足15分鐘以15分鐘計。</div>
+            </div>
+            <div class="mb-3"><label class="form-label">目的地地址 (DESTINATION)</label><input type="text" class="form-control" placeholder="請使用者輸入正確地址"></div>
+            <div class="mb-3">
+                <label class="form-label">搭乘客人數 (PASSENGERS)</label>
+                <select id="p-count-p" class="form-select" onchange="autoCheck('p-count-p', 'p-car')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-bold">訂車日期</label>
-                <input type="date" class="form-control">
+                <label class="form-label">選擇車型 (CAR TYPE)</label>
+                <select id="p-car" class="form-select"><option value="sedan">四人座轎車</option><option value="suv">四人座休旅車</option><option value="luxury">豪華7~9人座車</option></select>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-bold">預定送機時間</label>
-                <input type="time" class="form-control">
-                <p class="note-text">※ 服務人員將視狀況告知正確接車時間。</p>
+                <label class="form-label">行李數量 (LUGGAGE)</label>
+                <select class="form-select"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-bold">上車地址</label>
-                <input type="text" class="form-control" placeholder="請輸入正確地址">
+                <label class="form-label">行李類型 (LUGGAGE INFO)</label>
+                <textarea class="form-control" rows="3" placeholder="請客人自行填寫"></textarea>
+                <div class="note-text">備註：行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</div>
             </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">搭乘人數</label>
-                <select id="p-count-drop" class="form-select" onchange="autoSelect('p-count-drop', 'car-type-drop')">
-                    <option value="1-3">1~3人</option><option value="4-8">4~8人</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">選擇車型</label>
-                <select id="car-type-drop" class="form-select">
-                    <option value="sedan">四人座轎車</option><option value="suv">四人座休旅車</option><option value="luxury">豪華7~9人座車</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">行李數量 (1~10)</label>
-                <input type="number" class="form-control" min="1" max="10" value="1">
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">行李類型說明</label>
-                <textarea class="form-control" rows="2" placeholder="請註明行李箱尺寸與數量、輪椅等"></textarea>
-                <p class="small text-muted mt-1">※ 若上車現場與登錄不符，將另行計算現場報價。</p>
-            </div>
-            <button class="btn btn-gold" onclick="alert('送機訂單已送出')">確認預約送機</button>
+            <button class="btn-action">確認預約接機 (CONFIRM)</button>
         </div>
-        <button class="btn btn-outline-secondary w-100 mt-4" onclick="showView('home')">返回首頁</button>
+        <button class="btn btn-outline-secondary w-100 mt-4" onclick="showPage('page-home')">返回首頁 (BACK)</button>
     </div>
 
-    <div id="view-p2p" style="display:none;" class="container p-3">
-        <div class="text-center mb-3"><h4 class="fw-bold">禾速車隊 - 定點交通</h4></div>
-        <div class="img-grid-container">
-            <div class="img-placeholder">圖檔預留 1</div>
-            <div class="img-placeholder">圖檔預留 2</div>
-            <div class="img-placeholder img-large">下圖預留 (賓士九人座)</div>
+    <div id="page-dropoff" class="container mt-4 hidden">
+        <div class="brand-header"><div class="brand-name">禾速車隊</div></div>
+        <div class="img-grid">
+            <div class="img-placeholder img-small">上方兩小圖 1</div><div class="img-placeholder img-small">上方兩小圖 2</div>
+            <div class="img-placeholder img-large">下方一大圖預留區</div>
         </div>
-        <div class="form-container">
+        <div class="container-form">
             <div class="mb-3">
-                <label class="form-label fw-bold">出發地點</label>
-                <input type="text" class="form-control" placeholder="請輸入正確地址">
+                <label class="form-label">送機機場 (AIRPORT)</label>
+                <select class="form-select"><option>台北松山機場</option><option>桃園國際機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option></select>
+            </div>
+            <div class="mb-3"><label class="form-label">航班編號 (FLIGHT NO.)</label><input type="text" class="form-control" placeholder="請使用者輸入航班"></div>
+            <div class="mb-3"><label class="form-label">訂車日期 (DATE)</label><input type="date" class="form-control"></div>
+            <div class="mb-3">
+                <label class="form-label">預定送機時間 (TIME)</label><input type="time" class="form-control">
+                <div class="note-text">備註：使用者預定時間，但接單後服務人員將視狀況告知正確的接車時間</div>
+            </div>
+            <div class="mb-3"><label class="form-label">上車地址 (PICKUP ADDRESS)</label><input type="text" class="form-control" placeholder="請使用者輸入正確地址"></div>
+            <div class="mb-3">
+                <label class="form-label">搭乘客人數 (PASSENGERS)</label>
+                <select id="d-count" class="form-select" onchange="autoCheck('d-count', 'd-car')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-bold">目的地點</label>
-                <input type="text" class="form-control" placeholder="請輸入正確地址">
+                <label class="form-label">選擇車型 (CAR TYPE)</label>
+                <select id="d-car" class="form-select"><option value="sedan">四人座轎車</option><option value="suv">四人座休旅車</option><option value="luxury">豪華7~9人座車</option></select>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-bold">訂車日期</label>
-                <input type="date" class="form-control">
+                <label class="form-label">行李數量 (LUGGAGE)</label>
+                <select class="form-select"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
             </div>
             <div class="mb-3">
-                <label class="form-label fw-bold">預定時間</label>
-                <input type="time" class="form-control">
-                <p class="note-text">※ 超過預定，每15分鐘加收NT$100逾時費。</p>
+                <label class="form-label">行李類型 (LUGGAGE INFO)</label>
+                <textarea class="form-control" rows="3" placeholder="請客人自行填寫"></textarea>
+                <div class="note-text">備註：行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</div>
             </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">搭乘人數</label>
-                <select id="p-count-p2p" class="form-select" onchange="autoSelect('p-count-p2p', 'car-type-p2p')">
-                    <option value="1-3">1~3人</option><option value="4-8">4~8人</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">選擇車型</label>
-                <select id="car-type-p2p" class="form-select">
-                    <option value="sedan">四人座轎車</option><option value="suv">四人座休旅車</option><option value="luxury">豪華7~9人座車</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">行李數量 (1~10)</label>
-                <input type="number" class="form-control" min="1" max="10" value="1">
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">行李類型說明</label>
-                <textarea class="form-control" rows="2" placeholder="行李箱、輪椅等"></textarea>
-            </div>
-            <button class="btn btn-gold" onclick="alert('定點交通訂單已送出')">確認預約接駁</button>
+            <button class="btn-action">確認預約送機 (CONFIRM)</button>
         </div>
-        <button class="btn btn-outline-secondary w-100 mt-4" onclick="showView('home')">返回首頁</button>
+        <button class="btn btn-outline-secondary w-100 mt-4" onclick="showPage('page-home')">返回首頁 (BACK)</button>
     </div>
 
+    <div id="page-p2p" class="container mt-4 hidden">
+        <div class="brand-header"><div class="brand-name">禾速車隊</div></div>
+        <div class="img-grid">
+            <div class="img-placeholder img-small">上方兩小圖 1</div><div class="img-placeholder img-small">上方兩小圖 2</div>
+            <div class="img-placeholder img-large">下方一大圖預留區</div>
+        </div>
+        <div class="container-form">
+            <div class="mb-3"><label class="form-label">出發地點 (FROM)</label><input type="text" class="form-control" placeholder="請使用者輸入正確地址"></div>
+            <div class="mb-3"><label class="form-label">目的地點 (TO)</label><input type="text" class="form-control" placeholder="請使用者輸入正確地址"></div>
+            <div class="mb-3"><label class="form-label">訂車日期 (DATE)</label><input type="date" class="form-control"></div>
+            <div class="mb-3">
+                <label class="form-label">預定時間 (TIME)</label><input type="time" class="form-control">
+                <div class="note-text">備註：若超過預定，每15分鐘加收NT$100逾時費，不足15分鐘以15分鐘計。</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">搭乘客人數 (PASSENGERS)</label>
+                <select id="p2-count" class="form-select" onchange="autoCheck('p2-count', 'p2-car')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">選擇車型 (CAR TYPE)</label>
+                <select id="p2-car" class="form-select"><option value="sedan">四人座轎車</option><option value="suv">四人座休旅車</option><option value="luxury">豪華7~9人座車</option></select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">行李數量 (LUGGAGE)</label>
+                <select class="form-select"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">行李類型 (LUGGAGE INFO)</label>
+                <textarea class="form-control" rows="3" placeholder="請客人自行填寫"></textarea>
+                <div class="note-text">備註：行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</div>
+            </div>
+            <button class="btn-action">確認預約接駁 (CONFIRM)</button>
+        </div>
+        <button class="btn btn-outline-secondary w-100 mt-4" onclick="showPage('page-home')">返回首頁 (BACK)</button>
     </div>
+
+    <div id="page-login" class="container mt-4 hidden">
+        <div class="brand-header"><div class="brand-name">禾速車隊</div></div>
+        <div class="container-form">
+            <div class="mb-3"><label class="form-label">帳號</label><input type="tel" class="form-control" placeholder="請使用者輸入手機號碼"></div>
+            <div class="mb-3"><label class="form-label">密碼</label><input type="password" class="form-control" placeholder="請使用者輸入6-8碼數字"></div>
+            <button class="btn-action" onclick="loginSuccess()">登入 (LOGIN)</button>
+        </div>
+        <button class="btn btn-outline-secondary w-100 mt-3" onclick="showPage('page-home')">返回</button>
+    </div>
+</div>
 
 <script>
-    function showView(viewId) {
-        const views = ['home', 'login', 'register', 'pickup', 'dropoff', 'p2p'];
-        views.forEach(v => {
-            const el = document.getElementById('view-' + v);
-            if(el) el.style.display = 'none';
-        });
-        document.getElementById('view-' + viewId).style.display = 'block';
-        window.scrollTo(0, 0);
+    let logged = false;
+    function showPage(p) {
+        const pages = ['page-home', 'page-login', 'page-pickup', 'page-dropoff', 'page-p2p'];
+        pages.forEach(id => { const el = document.getElementById(id); if(el) el.classList.add('hidden'); });
+        document.getElementById(p).classList.remove('hidden');
+        window.scrollTo(0,0);
     }
-
-    // 通用的防呆邏輯
-    function autoSelect(countId, carId) {
-        const count = document.getElementById(countId).value;
-        const carType = document.getElementById(carId);
-        if (count === '4-8') {
-            carType.value = 'luxury';
-            alert('人數超過4人，已自動選取豪華 7~9 人座車。');
+    function checkAuth(t) {
+        if(!logged) { alert('請先登入會員喔！'); showPage('page-login'); } else { showPage(t); }
+    }
+    function loginSuccess() {
+        logged = true; alert('登入成功！'); showPage('page-home');
+    }
+    function autoCheck(cId, carId) {
+        const c = document.getElementById(cId).value;
+        const car = document.getElementById(carId);
+        if(c === '4-8') {
+            car.value = 'luxury';
+            alert('貼心提醒：人數較多，已自動為您選取「豪華7~9人座車」！');
         }
     }
 </script>
