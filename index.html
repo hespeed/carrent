@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>禾速車隊 - 尊榮接送服務</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --brand-gold: #D4AF37;
+            --brand-dark: #1A1A1A;
+            --brand-gray: #2C2C2C;
+        }
+        body { background-color: #f4f4f4; font-family: "Microsoft JhengHei", sans-serif; }
+        
+        /* 頂部 LINE 區塊 */
+        .line-header { background-color: #00b900; color: white; text-align: center; padding: 10px; font-weight: bold; text-decoration: none; display: block; sticky-top: 0; z-index: 1000; }
+
+        /* 標題區域 */
+        .brand-section { background: linear-gradient(135deg, var(--brand-dark), var(--brand-gray)); color: var(--brand-gold); padding: 40px 20px; text-align: center; border-bottom: 3px solid var(--brand-gold); }
+        .brand-logo { font-size: 2.5rem; font-weight: 800; letter-spacing: 5px; margin-bottom: 5px; }
+
+        /* 選單按鈕美化 */
+        .menu-grid { padding: 20px; }
+        .nav-card { 
+            background: white; border: none; border-radius: 15px; padding: 20px; text-align: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer;
+            text-decoration: none; color: var(--brand-dark); display: block; margin-bottom: 15px;
+        }
+        .nav-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); border-left: 5px solid var(--brand-gold); }
+        .nav-card h5 { margin: 0; font-weight: bold; }
+
+        /* 價目表美化 */
+        .price-section { padding: 0 20px 40px; }
+        .price-card { background: white; border-radius: 12px; padding: 15px; border-top: 4px solid var(--brand-gold); box-shadow: 0 2px 10px rgba(0,0,0,0.05); height: 100%; }
+        .price-city { font-size: 0.9rem; color: #666; margin-bottom: 5px; }
+        .price-amount { font-size: 1.1rem; font-weight: bold; color: var(--brand-dark); }
+
+        /* 會員登入框 */
+        .login-box { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-top: -30px; }
+        .btn-gold { background-color: var(--brand-gold); color: white; border: none; padding: 12px; font-weight: bold; border-radius: 10px; width: 100%; }
+        .btn-gold:hover { background-color: #b8962d; color: white; }
+    </style>
+</head>
+<body>
+
+<a href="#" class="line-header">官方 LINE 預約諮詢 (ID: @hespeed)</a>
+
+<div id="app">
+    
+    <div id="home-view">
+        <div class="brand-section">
+            <div class="brand-logo">禾速車隊</div>
+            <div class="small text-uppercase">He Speed Premium Transport</div>
+        </div>
+
+        <div class="menu-grid container">
+            <div class="nav-card" onclick="showView('login')">
+                <h5>👤 會員登入 / 專區</h5>
+            </div>
+            <div class="row g-3">
+                <div class="col-6">
+                    <div class="nav-card" onclick="showView('pickup')"><h5>🛬 機場接機</h5></div>
+                </div>
+                <div class="col-6">
+                    <div class="nav-card" onclick="showView('dropoff')"><h5>🛫 機場送機</h5></div>
+                </div>
+                <div class="col-12">
+                    <div class="nav-card" onclick="showView('p2p')"><h5>📍 定點交通</h5></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="price-section container">
+            <h6 class="mb-3 fw-bold text-muted">| 參考價目表</h6>
+            <div class="row g-3 text-center">
+                <div class="col-6"><div class="price-card"><div class="price-city">台北松山</div><div class="price-amount">NT$ 800+</div></div></div>
+                <div class="col-6"><div class="price-card"><div class="price-city">桃園國際</div><div class="price-amount">NT$ 1,000+</div></div></div>
+                <div class="col-6"><div class="price-card"><div class="price-city">台中清泉崗</div><div class="price-amount">NT$ 2,500+</div></div></div>
+                <div class="col-6"><div class="price-card"><div class="price-city">高雄小港</div><div class="price-amount">NT$ 3,500+</div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-view" style="display:none;" class="container p-4">
+        <div class="text-center mb-5 mt-4">
+            <h2 class="fw-bold">禾速車隊</h2>
+            <p class="text-muted">請輸入您的帳號密碼</p>
+        </div>
+        <div class="login-box">
+            <div class="mb-3">
+                <label class="form-label">手機號碼</label>
+                <input type="tel" class="form-control form-control-lg" placeholder="請輸入手機號碼">
+            </div>
+            <div class="mb-4">
+                <label class="form-label">設定密碼 (6-8碼數字)</label>
+                <input type="password" class="form-control form-control-lg" placeholder="請輸入數字密碼">
+            </div>
+            <button class="btn btn-gold mb-3">登入</button>
+            <div class="text-center">
+                <a href="#" class="text-decoration-none text-muted small">新會員？點我註冊</a>
+            </div>
+            <hr>
+            <button class="btn btn-outline-secondary btn-sm w-100" onclick="showView('home')">返回首頁</button>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function showView(viewId) {
+        document.getElementById('home-view').style.display = 'none';
+        document.getElementById('login-view').style.display = 'none';
+        
+        if(viewId === 'home') document.getElementById('home-view').style.display = 'block';
+        if(viewId === 'login') document.getElementById('login-view').style.display = 'block';
+        
+        if(['pickup', 'dropoff', 'p2p'].includes(viewId)) {
+            alert('即將進入 ' + viewId + ' 表單頁面，將使用相同的美化風格設計！');
+            // 後續會為您產出這些頁面的 code
+        }
+    }
+</script>
+
+</body>
+</html>
