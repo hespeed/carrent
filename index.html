@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>禾速車隊 HESPEED - 尊榮接送系統</title>
+    <title>禾速車隊 HESPEED - 全功能預約系統</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root { --v-orange: #FF7E5F; --s-yellow: #FEB47B; --bg-soft: #FFF9F5; }
@@ -26,14 +26,14 @@
 </head>
 <body>
 
-<div id="loading">連線中，請稍候... (CONNECTING...)</div>
-<a href="#" class="line-header">官方 LINE 帳號 (OFFICIAL LINE ACCOUNT)</a>
+<div id="loading">處理中，請稍候...</div>
+<a href="https://line.me" class="line-header">官方 LINE 帳號 (聯絡客服)</a>
 
 <div id="app">
     <div id="page-home">
         <div class="brand-header"><h1>禾速車隊</h1><p>HESPEED PREMIUM</p></div>
         <div class="img-grid">
-            <div class="img-placeholder img-small">車隊形象 1</div><div class="img-placeholder img-small">車隊形象 2</div>
+            <div class="img-placeholder img-small">專業車隊</div><div class="img-placeholder img-small">尊榮服務</div>
             <div class="img-placeholder img-large">賓士九人座豪華大圖預留區</div>
         </div>
         <div class="px-3" id="main-menu">
@@ -45,7 +45,7 @@
     </div>
 
     <div id="page-login" class="hidden">
-        <div class="brand-header"><h2>禾速車隊</h2><p>MEMBER LOGIN</p></div>
+        <div class="brand-header"><h2>會員登入</h2></div>
         <div class="container-form">
             <label class="form-label">會員帳號</label>
             <input type="tel" id="l-phone" class="form-control mb-3" placeholder="請輸入手機號碼">
@@ -59,13 +59,13 @@
     </div>
 
     <div id="page-reg" class="hidden">
-        <div class="brand-header"><h2>禾速車隊</h2><p>REGISTER</p></div>
+        <div class="brand-header"><h2>新會員註冊</h2></div>
         <div class="container-form">
             <label class="form-label">帳號</label>
-            <input type="tel" id="r-phone" class="form-control mb-3" placeholder="請使用者輸入手機號碼">
+            <input type="tel" id="r-phone" class="form-control mb-3" placeholder="請輸入手機號碼">
             <label class="form-label">密碼設定</label>
-            <input type="password" id="r-pwd1" class="form-control mb-3" placeholder="請使用者輸入6-8碼數字">
-            <label class="form-label">請使用者再輸入一次密碼</label>
+            <input type="password" id="r-pwd1" class="form-control mb-3" placeholder="請輸入6-8碼數字">
+            <label class="form-label">請再輸入一次密碼</label>
             <input type="password" id="r-pwd2" class="form-control mb-3">
             <button class="btn-action" onclick="registerAction()">註冊</button>
         </div>
@@ -79,9 +79,9 @@
             <label class="form-label">姓名</label><input type="text" id="p-name" class="form-control mb-3">
             <label class="form-label">手機號碼</label><input type="tel" id="p-phone" class="form-control mb-3" readonly>
             <label class="form-label">地址</label><input type="text" id="p-addr" class="form-control mb-3">
-            <button class="btn-action" onclick="updateProfile('basic')">儲存</button>
+            <button class="btn-action" onclick="updateProfile('basic')">儲存資料設定</button>
 
-            <div class="section-title">重設密碼功能</div>
+            <div class="section-title">重設密碼</div>
             <label class="form-label">重新設定新密碼</label>
             <input type="password" id="p-new-pwd1" class="form-control mb-3" placeholder="請輸入新密碼">
             <label class="form-label">再輸入一次設定的新密碼</label>
@@ -93,10 +93,6 @@
 
     <div id="page-dropoff" class="hidden">
         <div class="brand-header"><h2>機場送機</h2></div>
-        <div class="img-grid">
-            <div class="img-placeholder img-small">圖檔 1</div><div class="img-placeholder img-small">圖檔 2</div>
-            <div class="img-placeholder img-large">主要車型大圖</div>
-        </div>
         <div class="container-form">
             <label class="form-label">送機機場</label>
             <select id="d-airport" class="form-select mb-3">
@@ -105,35 +101,72 @@
             <label class="form-label">航班編號</label><input type="text" id="d-flight" class="form-control mb-3" placeholder="例：BR198">
             <label class="form-label">訂車日期</label><input type="date" id="d-date" class="form-control mb-3">
             <label class="form-label">預定送機時間</label><input type="time" id="d-time" class="form-control">
-            <div class="note-text">備註：使用者預定時間，但接單後服務人員將視狀況告知正確的接車時間</div>
-            
+            <div class="note-text">備註：使用者預定時間，但接單後服務人員將視狀況告知正確接車時間</div>
             <label class="form-label mt-3">上車地址</label><input type="text" id="d-addr" class="form-control mb-3" placeholder="請輸入完整地址">
-
-            <label class="form-label">搭乘客人數</label>
+            <label class="form-label">搭乘人數</label>
             <select id="d-pcount" class="form-select mb-3" onchange="autoCar('d-pcount','d-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
-            
             <label class="form-label">選擇車型</label>
             <select id="d-cartype" class="form-select mb-3"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華7~9人座車</option></select>
-            
             <label class="form-label">行李數量</label><select id="d-lcount" class="form-select mb-3"></select>
-            <label class="form-label">行李類型</label><textarea id="d-lnote" class="form-control mb-2" placeholder="行李箱請標示尺寸(例：28吋*2)"></textarea>
-            <div class="note-text">備註：行李箱、輪椅、手提行李各計算一件。若上車現場不符，將另行現場報價。</div>
-            <button class="btn-action" onclick="submitBooking('機場送機')">確認送機預約</button>
+            <label class="form-label">行李備註</label><textarea id="d-lnote" class="form-control mb-2"></textarea>
+            <button class="btn-action" onclick="submitBooking('機場送機')">確認預約</button>
+        </div>
+        <button class="btn btn-outline-secondary w-100 mt-4 border-0" onclick="showPage('page-home')">返回</button>
+    </div>
+
+    <div id="page-pickup" class="hidden">
+        <div class="brand-header"><h2>機場接機</h2></div>
+        <div class="container-form">
+            <label class="form-label">接機機場</label>
+            <select id="p-airport" class="form-select mb-3">
+                <option>台北松山機場</option><option>桃園國際機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option>
+            </select>
+            <label class="form-label">航班編號</label><input type="text" id="p-flight" class="form-control mb-3" placeholder="例：CI101">
+            <label class="form-label">抵達日期</label><input type="date" id="p-date" class="form-control mb-3">
+            <label class="form-label">預定接機時間 (飛機落地時間)</label><input type="time" id="p-time" class="form-control">
+            <label class="form-label mt-3">送達地址</label><input type="text" id="p-addr-to" class="form-control mb-3" placeholder="請輸入目的地點">
+            <label class="form-label">搭乘人數</label>
+            <select id="p-pcount" class="form-select mb-3" onchange="autoCar('p-pcount','p-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
+            <label class="form-label">選擇車型</label>
+            <select id="p-cartype" class="form-select mb-3"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華7~9人座車</option></select>
+            <label class="form-label">行李數量</label><select id="p-lcount" class="form-select mb-3"></select>
+            <label class="form-label">行李備註</label><textarea id="p-lnote" class="form-control mb-2"></textarea>
+            <button class="btn-action" onclick="submitBooking('機場接機')">確認預約</button>
+        </div>
+        <button class="btn btn-outline-secondary w-100 mt-4 border-0" onclick="showPage('page-home')">返回</button>
+    </div>
+
+    <div id="page-p2p" class="hidden">
+        <div class="brand-header"><h2>定點交通</h2></div>
+        <div class="container-form">
+            <label class="form-label">行程日期</label><input type="date" id="o-date" class="form-control mb-3">
+            <label class="form-label">上車時間</label><input type="time" id="o-time" class="form-control mb-3">
+            <label class="form-label">起點地址</label><input type="text" id="o-addr-start" class="form-control mb-3" placeholder="請輸入上車起點">
+            <label class="form-label">終點地址</label><input type="text" id="o-addr-end" class="form-control mb-3" placeholder="請輸入目的地點">
+            <label class="form-label">搭乘人數</label>
+            <select id="o-pcount" class="form-select mb-3" onchange="autoCar('o-pcount','o-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
+            <label class="form-label">選擇車型</label>
+            <select id="o-cartype" class="form-select mb-3"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華7~9人座車</option></select>
+            <label class="form-label">行李數量</label><select id="o-lcount" class="form-select mb-3"></select>
+            <label class="form-label">行李備註</label><textarea id="o-lnote" class="form-control mb-2"></textarea>
+            <button class="btn-action" onclick="submitBooking('定點交通')">確認預約</button>
         </div>
         <button class="btn btn-outline-secondary w-100 mt-4 border-0" onclick="showPage('page-home')">返回</button>
     </div>
 </div>
 
 <script>
-    // --- 通訊校對核心設定 ---
+    // --- 【設定區】請填入您的 Google Apps Script URL ---
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-L59iCztJBLbzPT2FVDUu22yJOlZwVe9YUkrw3cvMCCw6vUdXEXJ1Sbb_ujnAmertOw/exec";
     
     let currentUser = null;
     let failCount = 0;
 
-    // 初始化 1-10 行李選單
-    const dL = document.getElementById('d-lcount');
-    if(dL) for(let i=1; i<=10; i++) dL.options.add(new Option(i, i));
+    // 初始化所有行李選單
+    ['d-lcount', 'p-lcount', 'o-lcount'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) for(let i=1; i<=10; i++) el.options.add(new Option(i, i));
+    });
 
     function showPage(p) {
         document.querySelectorAll('#app > div').forEach(div => div.classList.add('hidden'));
@@ -153,38 +186,23 @@
     function autoCar(pId, cId) {
         if(document.getElementById(pId).value === '4-8') {
             document.getElementById(cId).value = '豪華7~9人座車';
-            alert('人數較多，系統已自動跳選「豪華7~9人座車」');
+            alert('系統提示：已自動為您選擇豪華車型');
         }
     }
 
-    // --- 登入驗證函數 (校對版) ---
+    // --- 登入驗證 ---
     async function loginVerify() {
-        const phoneInput = document.getElementById('l-phone').value.trim();
-        const pwdInput = document.getElementById('l-pwd').value.trim();
-
-        if (!phoneInput || !pwdInput) {
-            alert('請輸入帳號與密碼');
-            return;
-        }
-
-        if (failCount >= 3) {
-            alert('三次密碼登錄失敗，請用官方Line聯絡服務人員重設密碼。');
-            return;
-        }
+        const phone = document.getElementById('l-phone').value.trim();
+        const pwd = document.getElementById('l-pwd').value.trim();
+        if (!phone || !pwd) { alert('請填寫完整資訊'); return; }
+        if (failCount >= 3) { alert('失敗次數過多，請聯繫 LINE'); return; }
 
         document.getElementById('loading').style.display = 'flex';
-
         try {
-            const response = await fetch(SCRIPT_URL, {
+            const res = await fetch(SCRIPT_URL, {
                 method: 'POST',
-                body: JSON.stringify({
-                    targetSheet: "登入驗證", 
-                    phone: phoneInput,
-                    password: pwdInput
-                })
-            });
-
-            const res = await response.json();
+                body: JSON.stringify({ targetSheet: "登入驗證", phone, password: pwd })
+            }).then(r => r.json());
 
             if (res.result === "success") {
                 currentUser = res.userData;
@@ -192,47 +210,32 @@
                 enterMemberArea();
             } else {
                 failCount++;
-                const msgEl = document.getElementById('login-error-msg');
-                msgEl.innerText = `帳號或密碼錯誤！剩餘嘗試次數：${3 - failCount}`;
-                msgEl.classList.remove('hidden');
-                if (failCount >= 3) alert('帳號已鎖定，請洽官方Line。');
+                const msg = document.getElementById('login-error-msg');
+                msg.innerText = `帳密錯誤！剩餘次數：${3 - failCount}`;
+                msg.classList.remove('hidden');
             }
-        } catch (e) {
-            console.error("連線錯誤：", e);
-            alert('連線失敗！請確認後端部署是否設為「所有人」或網路是否通暢。');
-        } finally {
-            document.getElementById('loading').style.display = 'none';
-        }
+        } catch (e) { alert('連線失敗，請檢查後端部署'); }
+        finally { document.getElementById('loading').style.display = 'none'; }
     }
 
     function enterMemberArea() {
-        // 更新 UI 稱呼
-        const dispName = currentUser.name && currentUser.name !== "會員" ? currentUser.name + " 先生/小姐" : "會員您好";
-        document.getElementById('u-display-name').innerText = dispName;
+        document.getElementById('u-display-name').innerText = currentUser.name && currentUser.name !== "會員" ? currentUser.name + " 先生/小姐" : "會員您好";
         document.getElementById('u-display-phone').innerText = currentUser.phone;
-        
-        // 填入專區表單
         document.getElementById('p-name').value = currentUser.name || "";
         document.getElementById('p-phone').value = currentUser.phone;
         document.getElementById('p-addr').value = currentUser.addr || "";
-        
-        // 修改首頁登入按鈕為會員專區
-        const loginBtn = document.getElementById('btn-login-main');
-        loginBtn.innerText = "會員專區 (MEMBER AREA)";
-        loginBtn.onclick = () => showPage('page-profile');
-        
-        alert('登入成功，歡迎回來！');
+        document.getElementById('btn-login-main').innerText = "會員專區";
+        document.getElementById('btn-login-main').onclick = () => showPage('page-profile');
+        alert('登入成功');
         showPage('page-home');
     }
 
-    // --- 註冊函數 (校對版) ---
+    // --- 註冊 ---
     async function registerAction() {
         const p = document.getElementById('r-phone').value.trim();
         const pw1 = document.getElementById('r-pwd1').value.trim();
         const pw2 = document.getElementById('r-pwd2').value.trim();
-
-        if(!p || pw1.length < 6) { alert('請輸入正確手機號碼與至少6位數密碼'); return; }
-        if(pw1 !== pw2) { alert('兩次密碼輸入不一致'); return; }
+        if(!p || pw1.length < 6 || pw1 !== pw2) { alert('請檢查電話或密碼一致性(至少6碼)'); return; }
         
         document.getElementById('loading').style.display = 'flex';
         try {
@@ -240,71 +243,81 @@
                 method: 'POST',
                 body: JSON.stringify({ targetSheet: "會員註冊", phone: p, password: pw1 })
             }).then(r => r.json());
-            
-            if(res.result === "success") {
-                alert('註冊成功！請使用新密碼登入。');
-                showPage('page-login');
-            }
-        } catch(e) {
-            alert('註冊失敗，請稍後再試');
-        } finally {
-            document.getElementById('loading').style.display = 'none';
-        }
+            if(res.result === "success") { alert('註冊成功！'); showPage('page-login'); }
+        } catch(e) { alert('註冊失敗'); }
+        finally { document.getElementById('loading').style.display = 'none'; }
     }
 
-    // --- 個人資料/密碼更新 (校對版) ---
+    // --- 資料與密碼更新 ---
     async function updateProfile(mode) {
         let payload = { targetSheet: "更新資料", phone: currentUser.phone };
-        
         if (mode === 'basic') {
             payload.newName = document.getElementById('p-name').value;
             payload.newAddr = document.getElementById('p-addr').value;
         } else {
             const pw1 = document.getElementById('p-new-pwd1').value;
             const pw2 = document.getElementById('p-new-pwd2').value;
-            if (!pw1 || pw1 !== pw2) { alert('新密碼不一致或為空！'); return; }
+            if (!pw1 || pw1 !== pw2) { alert('密碼不一致'); return; }
             payload.newPwd = pw1;
         }
-
         document.getElementById('loading').style.display = 'flex';
         try {
-            const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) }).then(r => r.json());
-            if(res.result === "success") {
-                alert('資料設定完成並儲存！');
-                if(mode === 'basic') {
-                    currentUser.name = payload.newName;
-                    document.getElementById('u-display-name').innerText = payload.newName ? payload.newName + " 先生/小姐" : "會員您好";
-                }
-            }
+            await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
+            alert('儲存完成！');
+            if(payload.newName) document.getElementById('u-display-name').innerText = payload.newName + " 先生/小姐";
         } catch(e) { alert('儲存失敗'); }
         finally { document.getElementById('loading').style.display = 'none'; }
     }
 
-    // --- 訂單送出 (校對版) ---
+    // --- 訂單提交 ---
     async function submitBooking(type) {
         document.getElementById('loading').style.display = 'flex';
-        const data = {
-            targetSheet: "訂單資料",
-            type: type,
-            account: currentUser.phone,
-            date: document.getElementById('d-date').value,
-            time: document.getElementById('d-time').value,
-            start: document.getElementById('d-addr').value,
-            end: document.getElementById('d-airport').value,
-            flight: document.getElementById('d-flight').value,
-            pCount: document.getElementById('d-pcount').value,
-            carType: document.getElementById('d-cartype').value,
-            lCount: document.getElementById('d-lcount').value,
-            lNote: document.getElementById('d-lnote').value
-        };
+        let data = { targetSheet: "訂單資料", type: type, account: currentUser.phone };
+
+        if (type === '機場送機') {
+            data.date = document.getElementById('d-date').value;
+            data.time = document.getElementById('d-time').value;
+            data.start = document.getElementById('d-addr').value;
+            data.end = document.getElementById('d-airport').value;
+            data.flight = document.getElementById('d-flight').value;
+            data.pCount = document.getElementById('d-pcount').value;
+            data.carType = document.getElementById('d-cartype').value;
+            data.lCount = document.getElementById('d-lcount').value;
+            data.lNote = document.getElementById('d-lnote').value;
+        } 
+        else if (type === '機場接機') {
+            data.date = document.getElementById('p-date').value;
+            data.time = document.getElementById('p-time').value;
+            data.start = document.getElementById('p-airport').value;
+            data.end = document.getElementById('p-addr-to').value;
+            data.flight = document.getElementById('p-flight').value;
+            data.pCount = document.getElementById('p-pcount').value;
+            data.carType = document.getElementById('p-cartype').value;
+            data.lCount = document.getElementById('p-lcount').value;
+            data.lNote = document.getElementById('p-lnote').value;
+        } 
+        else if (type === '定點交通') {
+            data.date = document.getElementById('o-date').value;
+            data.time = document.getElementById('o-time').value;
+            data.start = document.getElementById('o-addr-start').value;
+            data.end = document.getElementById('o-addr-end').value;
+            data.flight = "無";
+            data.pCount = document.getElementById('o-pcount').value;
+            data.carType = document.getElementById('o-cartype').value;
+            data.lCount = document.getElementById('o-lcount').value;
+            data.lNote = document.getElementById('o-lnote').value;
+        }
+
+        if(!data.date || !data.time || !data.start || !data.end) {
+            alert('日期、時間與地點為必填項');
+            document.getElementById('loading').style.display = 'none';
+            return;
+        }
 
         try {
             const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) }).then(r => r.json());
-            if(res.result === "success") {
-                alert('預約成功！禾速車隊將盡快為您安排。');
-                showPage('page-home');
-            }
-        } catch(e) { alert('送出失敗，請檢查網路'); }
+            if(res.result === "success") { alert('預約成功！'); showPage('page-home'); }
+        } catch(e) { alert('提交失敗'); }
         finally { document.getElementById('loading').style.display = 'none'; }
     }
 </script>
