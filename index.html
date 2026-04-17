@@ -167,15 +167,14 @@
         <div class="brand-header"><h2>機場送機</h2></div>
         <div class="container-form">
             <label class="form-label">送機機場</label>
-            <select id="d-airport" class="form-select"><option>桃園國際機場</option><option>台北松山機場</option></select>
+            <select id="p-airport" class="form-select"><option>桃園國際機場</option><option>台北松山機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option></select>
             <label class="form-label">日期</label><input type="date" id="d-date" class="form-control">
             <label class="form-label">上車時間</label>
             <span class="label-note">若超過預定時間 15 分鐘，每 15 分鐘加收 NT$100 逾時費。</span>
             <input type="time" id="d-time" class="form-control">
             <label class="form-label">上車地址</label><input type="text" id="d-addr" class="form-control">
-            <label class="form-label">人數與車型</label>
-            <select id="d-pcount" class="form-select" onchange="autoCar('d-pcount','d-cartype')"><option value="1-3">1-3人</option><option value="4-8">4-8人</option></select>
-            <select id="d-cartype" class="form-select mt-1"><option>四人座轎車</option><option>豪華 VIP 7-9人座</option></select>
+            <label class="form-label">人數</label><select id="p-pcount" class="form-select" onchange="autoCar('p-pcount','p-cartype')"><option value="1-3">1-3人</option><option value="4-8">4-8人</option></select>
+            <label class="form-label">車型</label><select id="p-cartype" class="form-select"><option>四人座轎車</option><option>豪華 VIP 7-9人座</option></select>
             <label class="form-label">行李數</label><select id="p-lcount" class="form-select"></select>
             <label class="form-label">行李備註</label>
             <span class="label-note">行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</span>
@@ -194,9 +193,8 @@
             <input type="time" id="d-time" class="form-control">
             <label class="form-label">起點地址</label><input type="text" id="o-addr-start" class="form-control">
             <label class="form-label">終點地址</label><input type="text" id="o-addr-end" class="form-control">
-            <label class="form-label">人數車型</label>
-            <select id="o-pcount" class="form-select" onchange="autoCar('o-pcount','o-cartype')"><option value="1-3">1-3人</option><option value="4-8">4-8人</option></select>
-            <select id="o-cartype" class="form-select mt-1"><option>四人座轎車</option><option>豪華 VIP 7-9人座</option></select>
+            <label class="form-label">人數</label><select id="p-pcount" class="form-select" onchange="autoCar('p-pcount','p-cartype')"><option value="1-3">1-3人</option><option value="4-8">4-8人</option></select>
+            <label class="form-label">車型</label><select id="p-cartype" class="form-select"><option>四人座轎車</option><option>豪華 VIP 7-9人座</option></select>
             <label class="form-label">行李數</label><select id="p-lcount" class="form-select"></select>
             <label class="form-label">行李備註</label>
             <span class="label-note">行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</span>
