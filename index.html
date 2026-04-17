@@ -37,23 +37,26 @@
             color: var(--light-gold); margin-bottom: 25px; box-shadow: var(--shadow-md);
         }
 
-        .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px; margin-bottom: 25px; }
-        .img-placeholder {
-            background: white; border-radius: 15px; border: 1px solid #E1E8ED;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; color: #AAB8C2; font-weight: bold; min-height: 100px;
-        }
-        .img-large { height: 180px; grid-column: span 2; }
-
         .container-form {
             background: white; border-radius: var(--radius-lg);
             padding: 30px; margin: 0 15px; box-shadow: var(--shadow-md);
         }
 
-        .form-label { font-weight: 700; color: var(--dark-blue); margin-bottom: 8px; font-size: 0.95rem; }
+        .form-label { font-weight: 700; color: var(--dark-blue); margin-bottom: 4px; font-size: 0.95rem; display: block; }
+        
+        /* 新增備註文字樣式 */
+        .label-note {
+            font-size: 0.75rem;
+            color: #7F8C8D;
+            font-weight: normal;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            display: block;
+        }
 
         .form-control, .form-select {
             border-radius: 12px; border: 2px solid #E1E8ED; padding: 12px; transition: 0.3s;
+            margin-bottom: 15px;
         }
 
         .form-control:focus { border-color: var(--gold); box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.1); outline: none; }
@@ -67,16 +70,8 @@
         .menu-btn {
             background: white; border-radius: 18px; padding: 22px; text-align: center;
             margin-bottom: 18px; border: 1px solid #F0F0F0; font-weight: bold;
-            color: var(--dark-blue); transition: 0.3s;
+            color: var(--dark-blue); transition: 0.3s; cursor: pointer;
         }
-
-        .note-text {
-            font-size: 0.85rem; color: var(--light-gold); background: var(--dark-blue);
-            padding: 15px; border-radius: 12px; border-left: 5px solid var(--gold);
-            line-height: 1.6; margin-bottom: 18px;
-        }
-
-        .section-title { color: var(--gold); font-weight: bold; border-bottom: 2px solid #E1E8ED; padding-bottom: 8px; margin-top: 25px; }
 
         .hidden { display: none; }
         #loading {
@@ -94,10 +89,6 @@
 <div id="app">
     <div id="page-home">
         <div class="brand-header"><h1>禾速車隊</h1><p>HESPEED PRIVATE VIP</p></div>
-        <div class="img-grid">
-            <div class="img-placeholder">專業管家司機</div><div class="img-placeholder">極致安全舒適</div>
-            <div class="img-placeholder img-large">賓士 VIP 車隊 形象展示</div>
-        </div>
         <div class="px-3">
             <div class="menu-btn" onclick="showPage('page-login')" id="btn-login-main">VIP 會員登入</div>
             <div class="menu-btn" onclick="checkAuth('page-pickup')">機場接機 (ARRIVAL)</div>
@@ -110,10 +101,10 @@
         <div class="brand-header"><h2>會員登入</h2></div>
         <div class="container-form">
             <label class="form-label">手機號碼</label>
-            <input type="tel" id="l-phone" class="form-control mb-3" placeholder="請輸入手機號碼">
+            <input type="tel" id="l-phone" class="form-control" placeholder="請輸入手機號碼">
             <label class="form-label">密碼</label>
-            <input type="password" id="l-pwd" class="form-control mb-3" placeholder="請輸入 6-8 碼數字">
-            <div id="login-error-msg" class="text-danger text-center mb-2 hidden" style="font-size:0.85rem"></div>
+            <input type="password" id="l-pwd" class="form-control" placeholder="請輸入密碼">
+            <div id="login-error-msg" class="text-danger text-center mb-2 hidden"></div>
             <button class="btn-action" onclick="loginVerify()">確認登入</button>
             <button class="btn btn-link w-100 mt-3 text-secondary" onclick="showPage('page-reg')">註冊新 VIP 會員</button>
         </div>
@@ -123,45 +114,49 @@
     <div id="page-reg" class="hidden">
         <div class="brand-header"><h2>新會員註冊</h2></div>
         <div class="container-form">
-            <label class="form-label">手機號碼</label><input type="tel" id="r-phone" class="form-control mb-3">
-            <label class="form-label">設定密碼</label><input type="password" id="r-pwd1" class="form-control mb-3">
-            <label class="form-label">確認密碼</label><input type="password" id="r-pwd2" class="form-control mb-3">
+            <label class="form-label">手機號碼</label><input type="tel" id="r-phone" class="form-control">
+            <label class="form-label">設定密碼</label><input type="password" id="r-pwd1" class="form-control">
+            <label class="form-label">確認密碼</label><input type="password" id="r-pwd2" class="form-control">
             <button class="btn-action" onclick="registerAction()">完成註冊</button>
         </div>
-        <button class="btn btn-link w-100 mt-2 text-secondary" onclick="showPage('page-login')">返回登入</button>
     </div>
 
     <div id="page-profile" class="hidden">
-        <div class="brand-header"><h2 id="u-display-name">尊貴會員</h2><p id="u-display-phone"></p></div>
+        <div class="brand-header"><h2 id="u-display-name">尊貴會員</h2></div>
         <div class="container-form">
-            <div class="section-title">個人資料</div>
-            <label class="form-label">姓名</label><input type="text" id="p-name" class="form-control mb-3">
-            <label class="form-label">手機</label><input type="tel" id="p-phone" class="form-control mb-3" readonly>
-            <label class="form-label">通訊地址</label><input type="text" id="p-addr" class="form-control mb-3">
+            <label class="form-label">姓名</label><input type="text" id="p-name" class="form-control">
+            <label class="form-label">手機</label><input type="tel" id="p-phone" class="form-control" readonly>
+            <label class="form-label">通訊地址</label><input type="text" id="p-addr" class="form-control">
             <button class="btn-action" onclick="updateProfile('basic')">儲存設定</button>
-
-            <div class="section-title">密碼變更</div>
-            <input type="password" id="p-new-pwd1" class="form-control mb-3" placeholder="新密碼">
-            <input type="password" id="p-new-pwd2" class="form-control mb-3" placeholder="再確認一次">
-            <button class="btn-action" style="background: var(--med-blue);" onclick="updateProfile('pwd')">更新密碼</button>
         </div>
-        <button class="btn btn-outline-secondary w-100 mt-4 border-0" onclick="showPage('page-home')">返回首頁</button>
     </div>
 
     <div id="page-dropoff" class="hidden">
         <div class="brand-header"><h2>機場送機</h2></div>
         <div class="container-form">
             <label class="form-label">送機機場</label>
-            <select id="d-airport" class="form-select mb-3"><option>桃園國際機場</option><option>台北松山機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option></select>
-            <label class="form-label">航班編號</label><input type="text" id="d-flight" class="form-control mb-3">
-            <label class="form-label">日期</label><input type="date" id="d-date" class="form-control mb-3">
-            <label class="form-label">上車時間</label><input type="time" id="d-time" class="form-control">
-            <div class="note-text">★ 接單後將與您確認最終時間。</div>
-            <label class="form-label mt-3">上車地址</label><input type="text" id="d-addr" class="form-control mb-3">
-            <label class="form-label">人數</label><select id="d-pcount" class="form-select mb-3" onchange="autoCar('d-pcount','d-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
-            <label class="form-label">車型</label><select id="d-cartype" class="form-select mb-3"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華 VIP 7~9人座車</option></select>
-            <label class="form-label">行李數</label><select id="d-lcount" class="form-select mb-3"></select>
-            <textarea id="d-lnote" class="form-control mb-2" placeholder="備註需求"></textarea>
+            <select id="d-airport" class="form-select"><option>桃園國際機場</option><option>台北松山機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option></select>
+            
+            <label class="form-label">航班編號</label><input type="text" id="d-flight" class="form-control">
+            
+            <label class="form-label">日期</label><input type="date" id="d-date" class="form-control">
+            
+            <label class="form-label">上車時間</label>
+            <span class="label-note">(備註：使用者預定時間，但接單後服務人員將視狀況告知正確的接車時間。若超過預定時間，每15分鐘加收NT$100逾時費，不足15分鐘以15分鐘計。)</span>
+            <input type="time" id="d-time" class="form-control">
+            
+            <label class="form-label">上車地址</label><input type="text" id="d-addr" class="form-control">
+            
+            <label class="form-label">人數</label>
+            <select id="d-pcount" class="form-select" onchange="autoCar('d-pcount','d-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
+            
+            <label class="form-label">車型</label>
+            <select id="d-cartype" class="form-select"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華 VIP 7~9人座車</option></select>
+            
+            <label class="form-label">行李數 <small class="text-secondary" style="font-weight:normal">(備註：行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。)</small></label>
+            <select id="d-lcount" class="form-select"></select>
+            
+            <textarea id="d-lnote" class="form-control" placeholder="請詳細備註行李尺寸、特殊需求"></textarea>
             <button class="btn-action" onclick="submitBooking('機場送機')">確認送機預約</button>
         </div>
         <button class="btn btn-outline-secondary w-100 mt-4 border-0" onclick="showPage('page-home')">返回</button>
@@ -171,15 +166,29 @@
         <div class="brand-header"><h2>機場接機</h2></div>
         <div class="container-form">
             <label class="form-label">接機機場</label>
-            <select id="p-airport" class="form-select mb-3"><option>桃園國際機場</option><option>台北松山機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option></select>
-            <label class="form-label">抵達航班</label><input type="text" id="p-flight" class="form-control mb-3">
-            <label class="form-label">日期</label><input type="date" id="p-date" class="form-control mb-3">
-            <label class="form-label">落地時間</label><input type="time" id="p-time" class="form-control">
-            <label class="form-label mt-3">送達地址</label><input type="text" id="p-addr-to" class="form-control mb-3">
-            <label class="form-label">人數</label><select id="p-pcount" class="form-select mb-3" onchange="autoCar('p-pcount','p-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
-            <label class="form-label">車型</label><select id="p-cartype" class="form-select mb-3"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華 VIP 7~9人座車</option></select>
-            <label class="form-label">行李數</label><select id="p-lcount" class="form-select mb-3"></select>
-            <textarea id="p-lnote" class="form-control mb-2" placeholder="備註需求"></textarea>
+            <select id="p-airport" class="form-select"><option>桃園國際機場</option><option>台北松山機場</option><option>台中清泉崗機場</option><option>高雄小港機場</option></select>
+            
+            <label class="form-label">抵達航班</label><input type="text" id="p-flight" class="form-control">
+            
+            <label class="form-label">日期</label><input type="date" id="p-date" class="form-control">
+            
+            <label class="form-label">落地時間</label>
+            <span class="label-note">(備註：若超過落地時間90分鐘，仍未上車，每15分鐘加收NT$100逾時費，不足15分鐘以15分鐘計。)</span>
+            <input type="time" id="p-time" class="form-control">
+            
+            <label class="form-label">送達地址</label><input type="text" id="p-addr-to" class="form-control">
+            
+            <label class="form-label">人數</label>
+            <select id="p-pcount" class="form-select" onchange="autoCar('p-pcount','p-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
+            
+            <label class="form-label">車型</label>
+            <select id="p-cartype" class="form-select"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華 VIP 7~9人座車</option></select>
+            
+            <label class="form-label">行李數</label>
+            <span class="label-note">(備註：行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。)</span>
+            <select id="p-lcount" class="form-select"></select>
+            
+            <textarea id="p-lnote" class="form-control" placeholder="請詳細備註行李尺寸、特殊需求"></textarea>
             <button class="btn-action" onclick="submitBooking('機場接機')">確認接機預約</button>
         </div>
         <button class="btn btn-outline-secondary w-100 mt-4 border-0" onclick="showPage('page-home')">返回</button>
@@ -188,14 +197,26 @@
     <div id="page-p2p" class="hidden">
         <div class="brand-header"><h2>定點接送</h2></div>
         <div class="container-form">
-            <label class="form-label">日期</label><input type="date" id="o-date" class="form-control mb-3">
-            <label class="form-label">時間</label><input type="time" id="o-time" class="form-control mb-3">
-            <label class="form-label">起點</label><input type="text" id="o-addr-start" class="form-control mb-3">
-            <label class="form-label">終點</label><input type="text" id="o-addr-end" class="form-control mb-3">
-            <label class="form-label">人數</label><select id="o-pcount" class="form-select mb-3" onchange="autoCar('o-pcount','o-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
-            <label class="form-label">車型</label><select id="o-cartype" class="form-select mb-3"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華 VIP 7~9人座車</option></select>
-            <label class="form-label">行李數</label><select id="o-lcount" class="form-select mb-3"></select>
-            <textarea id="o-lnote" class="form-control mb-2" placeholder="需求"></textarea>
+            <label class="form-label">日期</label><input type="date" id="o-date" class="form-control">
+            
+            <label class="form-label">時間</label>
+            <span class="label-note">(備註：若超過預定，每15分鐘加收NT$100逾時費，不足15分鐘以15分鐘計。)</span>
+            <input type="time" id="o-time" class="form-control">
+            
+            <label class="form-label">起點</label><input type="text" id="o-addr-start" class="form-control">
+            <label class="form-label">終點</label><input type="text" id="o-addr-end" class="form-control">
+            
+            <label class="form-label">人數</label>
+            <select id="o-pcount" class="form-select" onchange="autoCar('o-pcount','o-cartype')"><option value="1-3">1~3人</option><option value="4-8">4~8人</option></select>
+            
+            <label class="form-label">車型</label>
+            <select id="o-cartype" class="form-select"><option>四人座轎車</option><option>四人座休旅車</option><option>豪華 VIP 7~9人座車</option></select>
+            
+            <label class="form-label">行李數</label>
+            <span class="label-note">(備註：行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。)</span>
+            <select id="o-lcount" class="form-select"></select>
+            
+            <textarea id="o-lnote" class="form-control" placeholder="備註需求"></textarea>
             <button class="btn-action" onclick="submitBooking('定點交通')">確認預約</button>
         </div>
         <button class="btn btn-outline-secondary w-100 mt-4 border-0" onclick="showPage('page-home')">返回</button>
@@ -203,7 +224,7 @@
 </div>
 
 <script>
-    // --- 重要：請填入您的 Google Apps Script URL ---
+    // --- 重要：請在此填入您的最新 SCRIPT_URL ---
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcKqCo7kUjvKAG2Jbk3_qha3zxjVe0zFr9LIAOSdyLFdsoDheGdxUKH_bXOqcWbqvzfg/exec";
     
     let currentUser = null;
@@ -233,48 +254,37 @@
         }
     }
 
-    // --- 連線核心優化版 ---
     async function callBackend(payload) {
         document.getElementById('loading').style.display = 'flex';
         try {
             const response = await fetch(SCRIPT_URL, {
                 method: 'POST',
-                mode: 'cors', // 強制開啟 CORS 模式
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // 使用 text/plain 避開 CORS 預檢
+                mode: 'cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                 body: JSON.stringify(payload)
             });
-            const res = await response.json();
-            return res;
-        } catch (e) {
-            console.error("連線錯誤:", e);
-            throw e;
-        } finally {
-            document.getElementById('loading').style.display = 'none';
-        }
+            return await response.json();
+        } catch (e) { throw e; } 
+        finally { document.getElementById('loading').style.display = 'none'; }
     }
 
     async function loginVerify() {
         const phone = document.getElementById('l-phone').value.trim();
         const pwd = document.getElementById('l-pwd').value.trim();
-        if (!phone || !pwd) { alert('請完整填寫'); return; }
-        if (failCount >= 3) { alert('嘗試次數過多，請洽客服。'); return; }
-
+        if (!phone || !pwd) return;
         try {
             const res = await callBackend({ targetSheet: "登入驗證", phone, password: pwd });
-            if (res.result === "success") {
-                currentUser = res.userData;
-                enterMemberArea();
-            } else {
+            if (res.result === "success") { currentUser = res.userData; enterMemberArea(); } 
+            else { 
                 failCount++;
                 document.getElementById('login-error-msg').innerText = `密碼錯誤，剩餘試行次數：${3 - failCount}`;
                 document.getElementById('login-error-msg').classList.remove('hidden');
             }
-        } catch (e) { alert('連線逾時，請檢查網路或確認後端權限。'); }
+        } catch (e) { alert('連線逾時，請檢查網路。'); }
     }
 
     function enterMemberArea() {
         document.getElementById('u-display-name').innerText = (currentUser.name || "VIP 會員") + " 尊榮您好";
-        document.getElementById('u-display-phone').innerText = currentUser.phone;
         document.getElementById('p-name').value = currentUser.name || "";
         document.getElementById('p-phone').value = currentUser.phone;
         document.getElementById('p-addr').value = currentUser.addr || "";
@@ -287,11 +297,11 @@
         const p = document.getElementById('r-phone').value.trim();
         const pw1 = document.getElementById('r-pwd1').value.trim();
         const pw2 = document.getElementById('r-pwd2').value.trim();
-        if(!p || pw1.length < 6 || pw1 !== pw2) { alert('檢查輸入與密碼一致性'); return; }
+        if(!p || pw1.length < 6 || pw1 !== pw2) { alert('檢查輸入資訊'); return; }
         try {
             const res = await callBackend({ targetSheet: "會員註冊", phone: p, password: pw1 });
             if(res.result === "success") { alert('註冊成功！'); showPage('page-login'); }
-        } catch(e) { alert('註冊失敗，請重試。'); }
+        } catch(e) { alert('註冊異常'); }
     }
 
     async function updateProfile(mode) {
@@ -300,41 +310,49 @@
             payload.newName = document.getElementById('p-name').value;
             payload.newAddr = document.getElementById('p-addr').value;
         } else {
-            const pw1 = document.getElementById('p-new-pwd1').value;
-            const pw2 = document.getElementById('p-new-pwd2').value;
-            if (!pw1 || pw1 !== pw2) { alert('密碼不一致'); return; }
-            payload.newPwd = pw1;
+            payload.newPwd = document.getElementById('p-new-pwd1').value;
         }
-        try {
-            await callBackend(payload);
-            alert('儲存完成');
-            if(payload.newName) currentUser.name = payload.newName;
-        } catch(e) { alert('存儲異常'); }
+        try { await callBackend(payload); alert('儲存完成'); } catch(e) { alert('儲存失敗'); }
     }
 
     async function submitBooking(type) {
         let data = { targetSheet: "訂單資料", type: type, account: currentUser.phone };
-        const mapping = {
-            '機場送機': ['d-date', 'd-time', 'd-addr', 'd-airport', 'd-flight', 'd-pcount', 'd-cartype', 'd-lcount', 'd-lnote'],
-            '機場接機': ['p-date', 'p-time', 'p-airport', 'p-addr-to', 'p-flight', 'p-pcount', 'p-cartype', 'p-lcount', 'p-lnote'],
-            '定點交通': ['o-date', 'o-time', 'o-addr-start', 'o-addr-end', '無', 'o-pcount', 'o-cartype', 'o-lcount', 'o-lnote']
-        };
-        const fields = mapping[type];
-        data.date = document.getElementById(fields[0]).value;
-        data.time = document.getElementById(fields[1]).value;
-        data.start = document.getElementById(fields[2]).value;
-        data.end = document.getElementById(fields[3]).value;
-        data.flight = fields[4] === '無' ? 'N/A' : document.getElementById(fields[4]).value;
-        data.pCount = document.getElementById(fields[5]).value;
-        data.carType = document.getElementById(fields[6]).value;
-        data.lCount = document.getElementById(fields[7]).value;
-        data.lNote = document.getElementById(fields[8]).value;
-
-        if(!data.date || !data.time || !data.start) { alert('請填寫完整行程資訊'); return; }
+        if (type === '機場送機') {
+            data.date = document.getElementById('d-date').value;
+            data.time = document.getElementById('d-time').value;
+            data.start = document.getElementById('d-addr').value;
+            data.end = document.getElementById('d-airport').value;
+            data.flight = document.getElementById('d-flight').value;
+            data.pCount = document.getElementById('d-pcount').value;
+            data.carType = document.getElementById('d-cartype').value;
+            data.lCount = document.getElementById('d-lcount').value;
+            data.lNote = document.getElementById('d-lnote').value;
+        } else if (type === '機場接機') {
+            data.date = document.getElementById('p-date').value;
+            data.time = document.getElementById('p-time').value;
+            data.start = document.getElementById('p-airport').value;
+            data.end = document.getElementById('p-addr-to').value;
+            data.flight = document.getElementById('p-flight').value;
+            data.pCount = document.getElementById('p-pcount').value;
+            data.carType = document.getElementById('p-cartype').value;
+            data.lCount = document.getElementById('p-lcount').value;
+            data.lNote = document.getElementById('p-lnote').value;
+        } else {
+            data.date = document.getElementById('o-date').value;
+            data.time = document.getElementById('o-time').value;
+            data.start = document.getElementById('o-addr-start').value;
+            data.end = document.getElementById('o-addr-end').value;
+            data.flight = 'N/A';
+            data.pCount = document.getElementById('o-pcount').value;
+            data.carType = document.getElementById('o-cartype').value;
+            data.lCount = document.getElementById('o-lcount').value;
+            data.lNote = document.getElementById('o-lnote').value;
+        }
+        if(!data.date || !data.time || !data.start) { alert('資訊未完整'); return; }
         try {
             const res = await callBackend(data);
-            if(res.result === "success") { alert('預約成功，管家將與您確認！'); showPage('page-home'); }
-        } catch(e) { alert('預約提交失敗'); }
+            if(res.result === "success") { alert('預約成功，管家將與您聯繫！'); showPage('page-home'); }
+        } catch(e) { alert('提交異常'); }
     }
 </script>
 </body>
