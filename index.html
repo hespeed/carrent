@@ -156,7 +156,7 @@
             <label class="form-label">車型</label><select id="p-cartype" class="form-select"><option>四人座轎車</option><option>豪華 VIP 7-9人座</option></select>
             <label class="form-label">行李數</label><select id="p-lcount" class="form-select"></select>
             <label class="form-label">行李備註</label>
-            <span class="label-note">請填寫行李尺寸(吋)或是否有輪椅、高爾夫球袋等物件。</span>
+            <span class="label-note">行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</span>
             <textarea id="p-lnote" class="form-control" rows="3" placeholder="例如：28吋*2, 20吋*1, 摺疊輪椅*1"></textarea>
             <button class="btn-action" onclick="submitBooking('機場接機')">確認接機預約</button>
         </div>
@@ -176,9 +176,10 @@
             <label class="form-label">人數與車型</label>
             <select id="d-pcount" class="form-select" onchange="autoCar('d-pcount','d-cartype')"><option value="1-3">1-3人</option><option value="4-8">4-8人</option></select>
             <select id="d-cartype" class="form-select mt-1"><option>四人座轎車</option><option>豪華 VIP 7-9人座</option></select>
-            <label class="form-label">行李數與備註</label>
-            <select id="d-lcount" class="form-select"></select>
-            <textarea id="d-lnote" class="form-control mt-2" rows="3" placeholder="行李尺寸備註"></textarea>
+            <label class="form-label">行李數</label><select id="p-lcount" class="form-select"></select>
+            <label class="form-label">行李備註</label>
+            <span class="label-note">行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</span>
+            <textarea id="p-lnote" class="form-control" rows="3" placeholder="例如：28吋*2, 20吋*1, 摺疊輪椅*1"></textarea>
             <button class="btn-action" onclick="submitBooking('機場送機')">確認送機預約</button>
         </div>
         <button class="btn btn-outline-secondary w-100 mt-3 border-0" onclick="showPage('page-home')">返回</button>
@@ -187,15 +188,19 @@
     <div id="page-p2p" class="hidden">
         <div class="brand-header"><h2>定點接送</h2></div>
         <div class="container-form">
-            <label class="form-label">預約日期時間</label><input type="date" id="o-date" class="form-control"><input type="time" id="o-time" class="form-control mt-1">
+            <label class="form-label">日期</label><input type="date" id="d-date" class="form-control">
+            <label class="form-label">上車時間</label>
+            <span class="label-note">若超過預定時間 15 分鐘，每 15 分鐘加收 NT$100 逾時費。</span>
+            <input type="time" id="d-time" class="form-control">
             <label class="form-label">起點地址</label><input type="text" id="o-addr-start" class="form-control">
             <label class="form-label">終點地址</label><input type="text" id="o-addr-end" class="form-control">
             <label class="form-label">人數車型</label>
             <select id="o-pcount" class="form-select" onchange="autoCar('o-pcount','o-cartype')"><option value="1-3">1-3人</option><option value="4-8">4-8人</option></select>
             <select id="o-cartype" class="form-select mt-1"><option>四人座轎車</option><option>豪華 VIP 7-9人座</option></select>
-            <label class="form-label">行李數與備註</label>
-            <select id="o-lcount" class="form-select"></select>
-            <textarea id="o-lnote" class="form-control mt-2" rows="3" placeholder="詳細需求備註"></textarea>
+            <label class="form-label">行李數</label><select id="p-lcount" class="form-select"></select>
+            <label class="form-label">行李備註</label>
+            <span class="label-note">行李箱、登機箱、輪椅、手提行李各計算一件，行李箱請標示種類、尺寸、數量。若上車現場與登錄尺寸數量有誤，將另行計算現場報價。</span>
+            <textarea id="p-lnote" class="form-control" rows="3" placeholder="例如：28吋*2, 20吋*1, 摺疊輪椅*1"></textarea>
             <button class="btn-action" onclick="submitBooking('定點交通')">確認預約</button>
         </div>
         <button class="btn btn-outline-secondary w-100 mt-3 border-0" onclick="showPage('page-home')">返回</button>
